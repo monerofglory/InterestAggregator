@@ -1,0 +1,68 @@
+---
+# Reddit
+feedList:
+- name: Crusader Kings
+  feedType: Reddit
+  link: CrusaderKings
+  titleWords:
+  - Dev Diary
+- name: Europa Universalis 4
+  feedType: Reddit
+  link: EU4
+  titleWords:
+  - Dev Diary
+  - Development Diary
+- name: Victoria 3
+  feedType: Reddit
+  link: victoria3
+  titleWords:
+  - Dev Diary
+- name: Free Games on Epic
+  feedType: Reddit
+  link: freegamefindings
+  titleWords:
+  - Epic Games
+- name: Rimworld
+  feedType: Reddit
+  link: rimworld
+  userWords:
+  - /u/Oskar_Potocki
+  - "/u/SargBjornson"
+# Steam
+- name: Factorio
+  feedType: Steam
+  link: 427520
+  titleWords:
+  - Friday Facts
+- name: Chronicon
+  feedType: Steam
+  link: 375480
+  titleWords:
+  - Update
+- name: Dwarf Fortress
+  feedType: Steam
+  link: 975370
+- name: Foxhole
+  feedType: Steam
+  link: 505460
+- name: Songs of Syx
+  feedType: Steam
+  link: 1162750
+- name: PlateUp
+  feedType: Steam
+  link: 1599600
+  titleWords:
+  - Update 
+- name: Terraria
+  feedType: Steam
+  link: 105600
+  titleWords:
+  - State of the Game
+- name: Slormite Chronicles
+  feedType: Steam
+  link: 1104280
+  titleWords:
+  - Slormite Chronicles
+- name: Project Zomboid
+  feedType: Steam
+  link: 108600
