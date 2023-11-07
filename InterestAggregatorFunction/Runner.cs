@@ -8,7 +8,7 @@ using InterestAggregatorFunction.Services.Filter;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using RssFeedFunction.Services.FeedStorage;
+using InterestAggregatorFunction.Services.FeedStorage;
 
 namespace InterestAggregatorFunction
 {

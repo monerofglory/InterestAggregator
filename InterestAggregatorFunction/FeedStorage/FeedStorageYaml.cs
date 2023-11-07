@@ -6,7 +6,7 @@ using System.Reflection;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
-namespace RssFeedFunction.Services.FeedStorage
+namespace InterestAggregatorFunction.Services.FeedStorage
 {
     public class FeedStorageYaml : IFeedStorage
     {
