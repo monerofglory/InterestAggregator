@@ -1,4 +1,4 @@
-﻿namespace InterestAggregatorFunction.Services.EmailManager
+﻿namespace InterestAggregatorFunction.Services
 {
     public interface IEmailManager
     {

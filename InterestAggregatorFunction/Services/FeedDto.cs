@@ -1,4 +1,4 @@
-﻿namespace InterestAggregatorFunction.FeedServices
+﻿namespace InterestAggregatorFunction.Services
 {
     public class FeedListDto
     {

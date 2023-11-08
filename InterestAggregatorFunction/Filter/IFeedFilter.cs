@@ -1,7 +1,6 @@
-﻿using InterestAggregatorFunction.FeedServices;
-using System.ServiceModel.Syndication;
+﻿using System.ServiceModel.Syndication;
 
-namespace InterestAggregatorFunction.Services.Filter
+namespace InterestAggregatorFunction.Services
 {
     public interface IFeedFilter
     {

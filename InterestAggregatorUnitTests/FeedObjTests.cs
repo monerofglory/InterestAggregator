@@ -1,5 +1,3 @@
-using InterestAggregatorFunction.FeedServices;
-
 namespace InterestAggregatorUnitTests
 {
     public class FeedObjTests

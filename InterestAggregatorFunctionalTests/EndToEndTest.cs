@@ -1,14 +1,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using InterestAggregatorFunction;
 using InterestAggregatorFunction.Config;
-using InterestAggregatorFunction.FeedServices;
-using InterestAggregatorFunction.Services.IcsReader;
-using InterestAggregatorFunction.Services.FeedManager;
-using InterestAggregatorFunction.Services.FeedStorage;
+using InterestAggregatorFunction.Services;
 using System.Reflection;
 using System.ServiceModel.Syndication;
 using Xunit;
-using InterestAggregatorFunction.Services.HtmlContentBuilder;
 
 namespace InterestAggregatorFunctionalTests
 {

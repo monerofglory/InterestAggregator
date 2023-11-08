@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel.Syndication;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ServiceModel.Syndication;
 
-namespace InterestAggregatorFunction.Services.HtmlContentBuilder
+namespace InterestAggregatorFunction.Services;
+
+public interface IHtmlContentBuilder
 {
-    public interface IHtmlContentBuilder
-    {
-        public IHtmlContentBuilder WithRssFeedContent(Dictionary<string, List<SyndicationItem>> syndicationDict);
-        public IHtmlContentBuilder WithFixtureContent(string title, string time);
-        public string Build();
+    public IHtmlContentBuilder WithRssFeedContent(Dictionary<string, List<SyndicationItem>> syndicationDict);
+    public IHtmlContentBuilder WithFixtureContent(string title, string time);
+    public string Build();
 
-    }
 }

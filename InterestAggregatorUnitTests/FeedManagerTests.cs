@@ -1,7 +1,4 @@
 using Moq;
-using InterestAggregatorFunction.FeedServices;
-using InterestAggregatorFunction.Services.FeedManager;
-using InterestAggregatorFunction.Services.Filter;
 
 namespace InterestAggregatorUnitTests
 {

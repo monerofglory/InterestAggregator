@@ -1,9 +1,4 @@
-﻿using InterestAggregatorFunction.FeedServices;
-using InterestAggregatorFunction.Services.EmailManager;
-using InterestAggregatorFunction.Services.FeedManager;
-using InterestAggregatorFunction.Services.FeedStorage;
-using InterestAggregatorFunction.Services.HtmlContentBuilder;
-using InterestAggregatorFunction.Services.IcsReader;
+﻿using InterestAggregatorFunction.Services;
 using System.ServiceModel.Syndication;
 
 namespace InterestAggregatorFunction

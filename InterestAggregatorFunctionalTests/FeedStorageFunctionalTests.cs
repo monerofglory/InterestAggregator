@@ -1,6 +1,5 @@
 ﻿using InterestAggregatorFunction.Config;
-using InterestAggregatorFunction.Services.FeedStorage;
-using InterestAggregatorFunction.FeedServices;
+using InterestAggregatorFunction.Services;
 using System.Reflection;
 using Xunit;
 

@@ -1,4 +1,3 @@
-using InterestAggregatorFunction.Services.HtmlContentBuilder;
 using System.ServiceModel.Syndication;
 
 namespace InterestAggregatorUnitTests

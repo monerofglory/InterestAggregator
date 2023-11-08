@@ -1,7 +1,7 @@
 ﻿using Ical.Net;
 using Ical.Net.CalendarComponents;
 
-namespace InterestAggregatorFunction.Services.IcsReader
+namespace InterestAggregatorFunction.Services
 {
     public class IcsReader
     {

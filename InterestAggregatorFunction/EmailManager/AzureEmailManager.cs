@@ -1,8 +1,7 @@
 ﻿using Azure;
 using Azure.Communication.Email;
-using InterestAggregatorFunction.Services.EmailManager;
 
-namespace InterestAggregatorFunction.Services.AzureEmailManager
+namespace InterestAggregatorFunction.Services
 {
     public class AzureEmailManager : IEmailManager
     {

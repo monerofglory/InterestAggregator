@@ -1,6 +1,4 @@
-﻿using InterestAggregatorFunction.FeedServices;
-
-namespace InterestAggregatorFunction.Services.FeedStorage
+﻿namespace InterestAggregatorFunction.Services
 {
     public interface IFeedStorage
     {

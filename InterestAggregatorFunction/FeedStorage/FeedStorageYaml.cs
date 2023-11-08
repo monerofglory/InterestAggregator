@@ -1,10 +1,9 @@
 ﻿using InterestAggregatorFunction.Config;
-using InterestAggregatorFunction.FeedServices;
 using System.Reflection;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
-namespace InterestAggregatorFunction.Services.FeedStorage
+namespace InterestAggregatorFunction.Services
 {
     public class FeedStorageYaml : IFeedStorage
     {
