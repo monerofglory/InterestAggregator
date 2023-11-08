@@ -20,17 +20,17 @@ namespace InterestAggregatorFunction
         }
 
         [Function("Runner")]
-        public void Run([TimerTrigger("0 */5 * * * *", RunOnStartup = true)] TimerInfo myTimer)
+        public void Run([TimerTrigger("0 0 21 * * *")] TimerInfo myTimer)
         {
             //Register dependencies
             ServiceCollection services = new();
             services = RegisterDependencies(services);
             var serviceProvider = services.BuildServiceProvider();
-            EveningEmail eveningEmail = serviceProvider.GetService<EveningEmail>();
+            EveningEmail eveningEmail = serviceProvider.GetRequiredService<EveningEmail>();
             eveningEmail.Run();
         }
 
-        public static ServiceCollection RegisterDependencies(ServiceCollection services, FeedStorageYaml feedStorageYamlOverride = null)
+        public static ServiceCollection RegisterDependencies(ServiceCollection services, FeedStorageYaml? feedStorageYamlOverride = null)
         {
             services.AddTransient<EveningEmail>();
             services.AddTransient<IEmailManager, AzureEmailManager>();

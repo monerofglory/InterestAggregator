@@ -8,7 +8,7 @@ namespace InterestAggregatorFunction.Services.IcsReader
         public (string fixtureName, DateTime kickoff) CheckFootballFixtures(string team)
         {
             Calendar cal = GetICalAsync($"https://sports.yahoo.com/soccer/teams/{team}/ical.ics").Result;
-            CalendarEvent tomorrow = GetTomorowsEvent(cal);
+            CalendarEvent? tomorrow = GetTomorowsEvent(cal);
             if (tomorrow != null)
             {
                 return (tomorrow.Summary, tomorrow.DtStart.AsSystemLocal);
@@ -16,7 +16,7 @@ namespace InterestAggregatorFunction.Services.IcsReader
             return (string.Empty, DateTime.MinValue);
         }
 
-        private CalendarEvent? GetTomorowsEvent(Calendar calendar)
+        private static CalendarEvent? GetTomorowsEvent(Calendar calendar)
         {
             var tomorrow = DateTime.Now.AddDays(1).Date;
             foreach (CalendarEvent calEvent in calendar.Events)
@@ -34,11 +34,9 @@ namespace InterestAggregatorFunction.Services.IcsReader
             Calendar calendar;  
             using (var client = new HttpClient())
             {
-                using (var stream = await client.GetStreamAsync("https://sports.yahoo.com/soccer/teams/chelsea/ical.ics"))
-                {
-                    calendar = Calendar.Load(stream);
-                    // Do something with the calendar object
-                }
+                using var stream = await client.GetStreamAsync("https://sports.yahoo.com/soccer/teams/chelsea/ical.ics");
+                calendar = Calendar.Load(stream);
+                // Do something with the calendar object
             }
             return calendar;
 

@@ -8,7 +8,7 @@
         public List<string> TitleWords { get; set; }
         public List<string> UserWords { get; set; }
 
-        public Feed(string name, FeedTypeEnum feedType, string link, List<string> titleWords, List<string> userWords = null)
+        public Feed(string name, FeedTypeEnum feedType, string link, List<string>? titleWords = null, List<string>? userWords = null)
         {
             Name = name;
             FeedType = feedType;
@@ -17,7 +17,8 @@
             UserWords = userWords ?? new List<string>();
         }
 
-        public Feed() { }
+        public Feed() { } //A parameter-less constructor is required for deserialization from YAML.
+
         public string GetUrl() =>
             FeedType switch
             {

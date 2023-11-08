@@ -13,7 +13,7 @@ namespace InterestAggregatorFunction.Services.Filter
                 _ => throw new ArgumentException("Unsupported feed type"),
             };
 
-        private static List<SyndicationItem> FilterBasedOn(SyndicationFeed feed, List<string> titleWords = null, List<string> userWords = null)
+        private static List<SyndicationItem> FilterBasedOn(SyndicationFeed feed, List<string>? titleWords = null, List<string>? userWords = null)
         {
             //Filter out old items
             var items = feed.Items.Where(item => item.PublishDate >= DateTime.Now.AddDays(-1));

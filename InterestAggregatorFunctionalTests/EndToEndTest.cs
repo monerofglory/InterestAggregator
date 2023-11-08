@@ -32,9 +32,9 @@ namespace InterestAggregatorFunctionalTests
             services = Runner.RegisterDependencies(services, feedStorageYaml);
             ServiceProvider serviceProvider = services.BuildServiceProvider();
 
-            _feedManager = serviceProvider.GetService<IFeedManager>();
-            _feedStorage = serviceProvider.GetService<IFeedStorage>();
-            //_htmlGenerator = serviceProvider.GetService<IHtmlGenerator>();
+            _feedManager = serviceProvider.GetRequiredService<IFeedManager>();
+            _feedStorage = serviceProvider.GetRequiredService<IFeedStorage>();
+            //_htmlGenerator = serviceProvider.GetRequiredService<IHtmlGenerator>();
             _htmlGenerator = new HtmlGenerator();
         }
 

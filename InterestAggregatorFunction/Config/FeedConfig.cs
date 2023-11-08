@@ -2,6 +2,6 @@
 {
     public class FeedConfig : IFeedConfig
     {
-        public string YamlPath { get; set; }
+        public required string YamlPath { get; set; }
     }
 }
