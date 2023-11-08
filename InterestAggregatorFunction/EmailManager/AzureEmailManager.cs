@@ -1,7 +1,6 @@
 ﻿using Azure;
 using Azure.Communication.Email;
 using InterestAggregatorFunction.Services.EmailManager;
-using System;
 
 namespace InterestAggregatorFunction.Services.AzureEmailManager
 {

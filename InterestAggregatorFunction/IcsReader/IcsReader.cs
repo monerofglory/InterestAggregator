@@ -1,7 +1,4 @@
 ﻿using Ical.Net;
-using System.Net.Http;
-using System;
-using System.Threading.Tasks;
 using Ical.Net.CalendarComponents;
 
 namespace InterestAggregatorFunction.Services.IcsReader

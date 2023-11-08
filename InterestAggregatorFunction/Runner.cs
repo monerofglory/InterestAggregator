@@ -1,4 +1,3 @@
-using System;
 using InterestAggregatorFunction.Config;
 using InterestAggregatorFunction.Services.AzureEmailManager;
 using InterestAggregatorFunction.Services.EmailManager;
@@ -8,7 +7,6 @@ using InterestAggregatorFunction.Services.Filter;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using InterestAggregatorFunction.Services.FeedStorage;
 
 namespace InterestAggregatorFunction
 {

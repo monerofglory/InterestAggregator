@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace InterestAggregatorFunction.FeedServices
+﻿namespace InterestAggregatorFunction.FeedServices
 {
     public class Feed
     {

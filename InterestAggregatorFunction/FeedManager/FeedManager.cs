@@ -1,10 +1,6 @@
 ﻿using InterestAggregatorFunction.FeedServices;
 using InterestAggregatorFunction.Services.Filter;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Net;
-using System.Net.Http;
 using System.ServiceModel.Syndication;
 using System.Text;
 using System.Xml;

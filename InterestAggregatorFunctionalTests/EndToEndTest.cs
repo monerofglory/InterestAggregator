@@ -9,8 +9,6 @@ using InterestAggregatorFunction.Services.HtmlGenerator;
 using System.Reflection;
 using System.ServiceModel.Syndication;
 using Xunit;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using System;
 
 namespace InterestAggregatorFunctionalTests
 {

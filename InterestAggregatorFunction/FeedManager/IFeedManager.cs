@@ -1,5 +1,4 @@
 ﻿using InterestAggregatorFunction.FeedServices;
-using System.Collections.Generic;
 using System.ServiceModel.Syndication;
 
 namespace InterestAggregatorFunction.Services.FeedManager

@@ -1,7 +1,5 @@
 ﻿using InterestAggregatorFunction.Config;
 using InterestAggregatorFunction.FeedServices;
-using InterestAggregatorFunction.Services.FeedStorage;
-using System.IO;
 using System.Reflection;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;

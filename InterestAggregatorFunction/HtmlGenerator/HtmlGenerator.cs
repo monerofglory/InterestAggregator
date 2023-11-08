@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ServiceModel.Syndication;
-using System.Threading;
+﻿using System.ServiceModel.Syndication;
 
 namespace InterestAggregatorFunction.Services.HtmlGenerator
 {
