@@ -27,7 +27,7 @@ namespace InterestAggregatorFunctionalTests
 
             IFeedConfig config = new FeedConfig
             {
-                YamlPath = Assembly.GetExecutingAssembly().Location + "\\..\\..\\..\\..\\..\\InterestAggregatorFunction\\bin\\Debug\\net7.0\\YamlFeedList.yml"
+                YamlPath = Assembly.GetExecutingAssembly().Location + "\\..\\..\\..\\..\\InterestAggregatorFunction\\bin\\Debug\\net7.0\\YamlFeedList.yml"
             };
             FeedStorageYaml feedStorageYaml = new(config);
 
