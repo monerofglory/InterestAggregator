@@ -5,10 +5,10 @@ using InterestAggregatorFunction.FeedServices;
 using InterestAggregatorFunction.Services.IcsReader;
 using InterestAggregatorFunction.Services.FeedManager;
 using InterestAggregatorFunction.Services.FeedStorage;
-using InterestAggregatorFunction.Services.HtmlGenerator;
 using System.Reflection;
 using System.ServiceModel.Syndication;
 using Xunit;
+using InterestAggregatorFunction.Services.HtmlContentBuilder;
 
 namespace InterestAggregatorFunctionalTests
 {
@@ -16,7 +16,7 @@ namespace InterestAggregatorFunctionalTests
     {
         private readonly IFeedManager _feedManager;
         private readonly IFeedStorage _feedStorage;
-        private readonly HtmlGenerator _htmlGenerator;
+        private readonly IHtmlContentBuilder _htmlContentBuilder;
         private readonly IcsReader _icsReader = new();
 
         public EndToEndTest()
@@ -34,8 +34,7 @@ namespace InterestAggregatorFunctionalTests
 
             _feedManager = serviceProvider.GetRequiredService<IFeedManager>();
             _feedStorage = serviceProvider.GetRequiredService<IFeedStorage>();
-            //_htmlGenerator = serviceProvider.GetRequiredService<IHtmlGenerator>();
-            _htmlGenerator = new HtmlGenerator();
+            _htmlContentBuilder = serviceProvider.GetRequiredService<IHtmlContentBuilder>();
         }
 
         [Fact]
@@ -51,10 +50,10 @@ namespace InterestAggregatorFunctionalTests
             var (fixtureName, kickoff) = _icsReader.CheckFootballFixtures("chelsea");
 
             //Construct the email
-            string emailBody = _htmlGenerator.Begin()
-                .ConstructFeedHtml(filteredFeeds)
-                .ConstructOtherHtml(fixtureName, kickoff.ToShortTimeString())
-                .End();
+            string emailBody = _htmlContentBuilder
+                .WithRssFeedContent(filteredFeeds)
+                .WithFixtureContent(fixtureName, kickoff.ToShortTimeString())
+                .Build();
 
             //Send the email
             Assert.NotEmpty(emailBody);

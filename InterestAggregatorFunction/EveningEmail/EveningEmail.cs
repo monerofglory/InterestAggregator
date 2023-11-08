@@ -2,7 +2,7 @@
 using InterestAggregatorFunction.Services.EmailManager;
 using InterestAggregatorFunction.Services.FeedManager;
 using InterestAggregatorFunction.Services.FeedStorage;
-using InterestAggregatorFunction.Services.HtmlGenerator;
+using InterestAggregatorFunction.Services.HtmlContentBuilder;
 using InterestAggregatorFunction.Services.IcsReader;
 using System.ServiceModel.Syndication;
 
@@ -13,15 +13,15 @@ namespace InterestAggregatorFunction
         private readonly IEmailManager _emailManager;
         private readonly IFeedManager _feedManager;
         private readonly IFeedStorage _feedStorage;
-        private readonly HtmlGenerator _htmlGenerator;
+        private readonly IHtmlContentBuilder _htmlContentBuilder;
         private readonly IcsReader _icsReader = new();
 
-        public EveningEmail(IEmailManager emailManager, IFeedManager feedManager, IFeedStorage feedStorage)
+        public EveningEmail(IEmailManager emailManager, IFeedManager feedManager, IFeedStorage feedStorage, IHtmlContentBuilder htmlContentBuilder)
         {
             _emailManager = emailManager;
             _feedManager = feedManager;
             _feedStorage = feedStorage;
-            _htmlGenerator = new HtmlGenerator();
+            _htmlContentBuilder = htmlContentBuilder;
         }
 
         public void Run()
@@ -36,11 +36,10 @@ namespace InterestAggregatorFunction
             var (fixtureName, kickoff) = _icsReader.CheckFootballFixtures("chelsea");
 
             //Construct the htmlBody
-            string htmlFeedBody = _htmlGenerator
-                .Begin()
-                .ConstructFeedHtml(filteredFeeds)
-                .ConstructOtherHtml(fixtureName, kickoff.ToShortTimeString())
-                .End();
+            string htmlFeedBody = _htmlContentBuilder
+                .WithRssFeedContent(filteredFeeds)
+                .WithFixtureContent(fixtureName, kickoff.ToShortTimeString())
+                .Build();
 
             //Send the html as email
             _emailManager.SendEmail(htmlFeedBody);

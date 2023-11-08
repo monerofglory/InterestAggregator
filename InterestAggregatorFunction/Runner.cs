@@ -4,6 +4,7 @@ using InterestAggregatorFunction.Services.EmailManager;
 using InterestAggregatorFunction.Services.FeedManager;
 using InterestAggregatorFunction.Services.FeedStorage;
 using InterestAggregatorFunction.Services.Filter;
+using InterestAggregatorFunction.Services.HtmlContentBuilder;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -36,7 +37,7 @@ namespace InterestAggregatorFunction
             services.AddTransient<IEmailManager, AzureEmailManager>();
             services.AddTransient<IFeedManager, FeedManager>();
             services.AddTransient<IFeedFilter, FeedFilter>();
-            //services.AddTransient<IHtmlGenerator, HtmlGenerator>();
+            services.AddTransient<IHtmlContentBuilder, HtmlContentBuilder>();
             services.AddTransient<IFeedConfig, FeedConfig>();
 
             if (feedStorageYamlOverride != null)
