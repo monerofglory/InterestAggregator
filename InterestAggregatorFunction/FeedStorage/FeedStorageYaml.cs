@@ -8,7 +8,7 @@ namespace InterestAggregatorFunction.Services
     public class FeedStorageYaml : IFeedStorage
     {
         private readonly IFeedConfig _config;
-        private const string _relativeYamlLocation = "YamlFeedList.yml";
+        private const string _relativeYamlLocation = "/YamlFeedList.yml";
 
         public FeedStorageYaml(IFeedConfig config) {
             _config = config;

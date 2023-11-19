@@ -5,7 +5,7 @@ namespace InterestAggregatorFunction.Services
 {
     public class AzureEmailManager : IEmailManager
     {
-        private const string fromEmail = "DoNotReply@41cfda87-da39-4c60-9653-399c359808cc.azurecomm.net";
+        private const string fromEmail = "DoNotReply@b19343e0-1d0d-40de-8ae4-b6e2c21672de.azurecomm.net";
         private const string toEmail = "alexander_hoare@hotmail.co.uk";
         private readonly string subject = "Your Evening Feed " + DateTime.Now.ToShortDateString();
         private readonly string connectionString;
