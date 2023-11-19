@@ -8,16 +8,13 @@ namespace InterestAggregatorFunction.Services
     public class FeedStorageYaml : IFeedStorage
     {
         private readonly IFeedConfig _config;
-        private const string _relativeYamlLocation = "/YamlFeedList.yml";
 
         public FeedStorageYaml(IFeedConfig config) {
             _config = config;
         }
         public Feed[] GetFeeds()
         {
-            //Fetch the YAML
-            string path = GetYamlPath();
-            var yaml = File.ReadAllText(path);
+            var yaml = File.ReadAllText(GetYamlPath());
 
             return DeserializeYamlToFeedListDto(yaml).FeedList;
         }
@@ -33,7 +30,7 @@ namespace InterestAggregatorFunction.Services
 
         private string GetYamlPath()
         {
-            return _config.YamlPath ?? Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + _relativeYamlLocation;
+            return _config.YamlPath ?? Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/YamlFeedList.yml";
         }
     }
 }
