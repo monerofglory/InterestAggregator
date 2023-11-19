@@ -16,7 +16,7 @@ namespace InterestAggregatorFunction
         }
 
         [Function("Runner")]
-        public void Run([TimerTrigger("0 0 21 * * *", RunOnStartup = true)] TimerInfo myTimer)
+        public void Run([TimerTrigger("0 0 21 * * *")] TimerInfo myTimer)
         {
             //Register dependencies
             ServiceCollection services = new();

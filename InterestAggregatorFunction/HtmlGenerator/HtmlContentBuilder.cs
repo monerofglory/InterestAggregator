@@ -37,7 +37,7 @@ namespace InterestAggregatorFunction.Services
             {
                 return this;
             }
-            _fixtureHtml += $"<b>{fixture.Teams}\n</b>";
+            _fixtureHtml += $"<b>{fixture.FixtureName}\n</b>";
             _fixtureHtml += $"{fixture.FixtureTime.ToShortTimeString()}\n";
             return this;
         }

@@ -10,7 +10,6 @@ namespace InterestAggregatorFunction
         private readonly IFeedManager _feedManager;
         private readonly IFeedStorage _feedStorage;
         private readonly IHtmlContentBuilder _htmlContentBuilder;
-        private readonly FixtureFetcher _fixtureFetcher = new();
 
         public EveningEmail(IEmailManager emailManager, IFeedManager feedManager, IFeedStorage feedStorage, IHtmlContentBuilder htmlContentBuilder)
         {
@@ -29,7 +28,7 @@ namespace InterestAggregatorFunction
             Dictionary<string, List<SyndicationItem>> filteredFeeds = _feedManager.FilterFeeds(feeds);
 
             //Fetch football fixtures
-            var fixture = _fixtureFetcher.GetFixture("chelsea", DateOnly.FromDateTime(DateTime.Now.AddDays(1)));
+            var fixture = FixtureFetcher.GetFixture("chelsea", DateOnly.FromDateTime(DateTime.Now.AddDays(1)));
 
             //Construct the htmlBody
             string htmlFeedBody = _htmlContentBuilder
