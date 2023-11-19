@@ -2,8 +2,13 @@
   "profiles": {
     "InterestAggregatorFunction": {
       "commandName": "Project",
-      "commandLineArgs": "--port 7014",
-      "launchBrowser": false
+      "commandLineArgs": "--port 7014"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "httpPort": 34204,
+      "useSSL": false
     }
   }
 }

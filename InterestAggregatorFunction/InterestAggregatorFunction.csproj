@@ -5,6 +5,9 @@
     <OutputType>Exe</OutputType>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <DockerFastModeProjectMountDirectory>/home/site/wwwroot</DockerFastModeProjectMountDirectory>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <StartupObject>Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="YamlFeedList.yml" />
@@ -16,6 +19,7 @@
     <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.19.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Timer" Version="4.2.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.16.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
     <PackageReference Include="System.ServiceModel.Syndication" Version="7.0.0" />
     <PackageReference Include="YamlDotNet" Version="13.7.1" />
   </ItemGroup>
