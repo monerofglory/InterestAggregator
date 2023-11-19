@@ -1,3 +1,4 @@
+using FixtureFetchers;
 using System.ServiceModel.Syndication;
 
 namespace InterestAggregatorUnitTests
@@ -57,16 +58,15 @@ namespace InterestAggregatorUnitTests
                 ["Test Game Title"] = syndicationItems
             };
 
-            string fixtureName = "Chelsea vs Liverpool";
-            string fixtureTime = "12:30pm";
+            var fixture = new Fixture("Chelsea vs Liverpool", new DateTime(2023, 11, 23, 14, 30, 0));
             //Act
             var emailBody = _sut
                 .WithRssFeedContent(syndDict)
-                .WithFixtureContent(fixtureName, fixtureTime)
+                .WithFixtureContent(fixture)
                 .Build();
 
             //Assert
-            Assert.Equal("<PRE><b>Test Game Title</b>\n<a href=\"http://www.example.com/\" target=\"blank\">Test Title</a>\n\n<b>Chelsea vs Liverpool\n</b>12:30pm\n</PRE>", emailBody);
+            Assert.Equal("<PRE><b>Test Game Title</b>\n<a href=\"http://www.example.com/\" target=\"blank\">Test Title</a>\n\n<b>Chelsea vs Liverpool\n</b>14:30\n</PRE>", emailBody);
         }
 
         [Fact]
@@ -75,10 +75,12 @@ namespace InterestAggregatorUnitTests
             //Arrange
             var emptyDict = new Dictionary<string, List<SyndicationItem>>();
 
+            Fixture fixture = null;
+
             //Act
             var emailBody = _sut
                 .WithRssFeedContent(emptyDict)
-                .WithFixtureContent(string.Empty, "N/A")
+                .WithFixtureContent(fixture)
                 .Build();
 
             //Assert

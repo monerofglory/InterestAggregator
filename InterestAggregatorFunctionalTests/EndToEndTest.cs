@@ -5,6 +5,7 @@ using InterestAggregatorFunction.Services;
 using System.Reflection;
 using System.ServiceModel.Syndication;
 using Xunit;
+using FixtureFetchers;
 
 namespace InterestAggregatorFunctionalTests
 {
@@ -13,7 +14,7 @@ namespace InterestAggregatorFunctionalTests
         private readonly IFeedManager _feedManager;
         private readonly IFeedStorage _feedStorage;
         private readonly IHtmlContentBuilder _htmlContentBuilder;
-        private readonly IcsReader _icsReader = new();
+        private readonly FixtureFetcher _fixtureFetcher = new();
 
         public EndToEndTest()
         {
@@ -43,12 +44,12 @@ namespace InterestAggregatorFunctionalTests
             Dictionary<string, List<SyndicationItem>> filteredFeeds = _feedManager.FilterFeeds(feeds);
 
             //Fetch football fixtures
-            var (fixtureName, kickoff) = _icsReader.CheckFootballFixtures("chelsea");
+            var fixture = _fixtureFetcher.GetFixture("chelsea", DateOnly.FromDateTime(DateTime.Now.AddDays(1)));
 
             //Construct the email
             string emailBody = _htmlContentBuilder
                 .WithRssFeedContent(filteredFeeds)
-                .WithFixtureContent(fixtureName, kickoff.ToShortTimeString())
+                .WithFixtureContent(fixture)
                 .Build();
 
             //Send the email

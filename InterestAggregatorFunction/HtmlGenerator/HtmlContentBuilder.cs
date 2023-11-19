@@ -1,4 +1,5 @@
-﻿using System.ServiceModel.Syndication;
+﻿using FixtureFetchers;
+using System.ServiceModel.Syndication;
 
 namespace InterestAggregatorFunction.Services
 {
@@ -30,13 +31,14 @@ namespace InterestAggregatorFunction.Services
             return returnHtml;
         }
 
-        public IHtmlContentBuilder WithFixtureContent(string title, string time)
+        public IHtmlContentBuilder WithFixtureContent(Fixture fixture)
         {
-            if (!string.IsNullOrEmpty(title))
+            if (fixture == null)
             {
-                _fixtureHtml += $"<b>{title}\n</b>";
-                _fixtureHtml += $"{time}\n";
+                return this;
             }
+            _fixtureHtml += $"<b>{fixture.Teams}\n</b>";
+            _fixtureHtml += $"{fixture.FixtureTime.ToShortTimeString()}\n";
             return this;
         }
 
