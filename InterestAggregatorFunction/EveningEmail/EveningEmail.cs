@@ -1,6 +1,7 @@
 ﻿using FixtureFetchers;
 using InterestAggregatorFunction.Services;
 using System.ServiceModel.Syndication;
+using static Google.Protobuf.Compiler.CodeGeneratorResponse.Types;
 
 namespace InterestAggregatorFunction
 {
@@ -27,8 +28,9 @@ namespace InterestAggregatorFunction
             //Filter the feeds
             Dictionary<string, List<SyndicationItem>> filteredFeeds = _feedManager.FilterFeeds(feeds);
 
-            //Fetch football fixtures
-            var fixture = FixtureFetcher.GetFixture("chelsea", DateOnly.FromDateTime(DateTime.Now.AddDays(1)));
+            //Fetch football fixtures.
+            var fixture = FixtureFetcher.GetFixture("chelsea", DateOnly.FromDateTime(DateTime.Now.AddDays(1))) 
+                ?? FixtureFetcher.GetFixture("england", DateOnly.FromDateTime(DateTime.Now.AddDays(1)));
 
             //Construct the htmlBody
             string htmlFeedBody = _htmlContentBuilder
