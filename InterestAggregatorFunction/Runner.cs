@@ -6,14 +6,9 @@ using Microsoft.Extensions.Logging;
 
 namespace InterestAggregatorFunction
 {
-    public class Runner
+    public class Runner(ILoggerFactory loggerFactory)
     {
-        private readonly ILogger _logger;
-
-        public Runner(ILoggerFactory loggerFactory)
-        {
-            _logger = loggerFactory.CreateLogger<Runner>();
-        }
+        private readonly ILogger _logger = loggerFactory.CreateLogger<Runner>();
 
         [Function("Runner")]
         public void Run([TimerTrigger("0 0 21 * * *")] TimerInfo myTimer)

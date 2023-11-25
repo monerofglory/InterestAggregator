@@ -2,10 +2,12 @@ using Microsoft.Extensions.DependencyInjection;
 using InterestAggregatorFunction;
 using InterestAggregatorFunction.Config;
 using InterestAggregatorFunction.Services;
+using InterestAggregatorFunction.ServiceDtos;
 using System.Reflection;
 using System.ServiceModel.Syndication;
 using Xunit;
-using FixtureFetchers;
+using System.Net.Http.Json;
+using System.Net;
 
 namespace InterestAggregatorFunctionalTests
 {
@@ -43,8 +45,17 @@ namespace InterestAggregatorFunctionalTests
             Dictionary<string, List<SyndicationItem>> filteredFeeds = _feedManager.FilterFeeds(feeds);
 
             //Fetch football fixtures
-            var fixture = FixtureFetcher.GetFixture("chelsea", DateOnly.FromDateTime(DateTime.Now.AddDays(1)));
-
+            Fixture fixture;
+            var fixtureServiceResult = new HttpClient().GetAsync("https://fixturefetcherservice.azurewebsites.net/fixturefetcher/gettomorrowsfixture/chelsea").Result;
+            if (fixtureServiceResult.StatusCode == HttpStatusCode.NotFound)
+            {
+                fixture = null;
+            }
+            else
+            {
+                fixture = fixtureServiceResult.Content.ReadFromJsonAsync<Fixture>().Result;
+            }
+            
             //Construct the email
             string emailBody = _htmlContentBuilder
                 .WithRssFeedContent(filteredFeeds)

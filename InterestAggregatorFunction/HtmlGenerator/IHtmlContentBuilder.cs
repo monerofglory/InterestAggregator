@@ -1,4 +1,4 @@
-﻿using FixtureFetchers;
+﻿using InterestAggregatorFunction.ServiceDtos;
 using System.ServiceModel.Syndication;
 
 namespace InterestAggregatorFunction.Services;

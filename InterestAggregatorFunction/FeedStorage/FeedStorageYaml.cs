@@ -5,13 +5,10 @@ using YamlDotNet.Serialization.NamingConventions;
 
 namespace InterestAggregatorFunction.Services
 {
-    public class FeedStorageYaml : IFeedStorage
+    public class FeedStorageYaml(IFeedConfig config) : IFeedStorage
     {
-        private readonly IFeedConfig _config;
+        private readonly IFeedConfig _config = config;
 
-        public FeedStorageYaml(IFeedConfig config) {
-            _config = config;
-        }
         public Feed[] GetFeeds()
         {
             var yaml = File.ReadAllText(GetYamlPath());
