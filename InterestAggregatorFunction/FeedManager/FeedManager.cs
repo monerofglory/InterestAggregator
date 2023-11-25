@@ -5,13 +5,10 @@ using System.Xml;
 
 namespace InterestAggregatorFunction.Services;
 
-public class FeedManager : IFeedManager
+public class FeedManager(IFeedFilter feedFilter) : IFeedManager
 {
-    public readonly IFeedFilter _feedFilter;
-    public FeedManager(IFeedFilter feedFilter)
-    {
-        _feedFilter = feedFilter;
-    }
+    public readonly IFeedFilter _feedFilter = feedFilter;
+
     public Dictionary<string, List<SyndicationItem>> FilterFeeds(Feed[] feeds)
     {
         Dictionary<string, List<SyndicationItem>> resultDict = new();

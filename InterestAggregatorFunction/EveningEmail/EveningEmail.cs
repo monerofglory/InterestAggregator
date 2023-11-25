@@ -6,20 +6,12 @@ using System.ServiceModel.Syndication;
 
 namespace InterestAggregatorFunction
 {
-    public class EveningEmail
+    public class EveningEmail(IEmailManager emailManager, IFeedManager feedManager, IFeedStorage feedStorage, IHtmlContentBuilder htmlContentBuilder)
     {
-        private readonly IEmailManager _emailManager;
-        private readonly IFeedManager _feedManager;
-        private readonly IFeedStorage _feedStorage;
-        private readonly IHtmlContentBuilder _htmlContentBuilder;
-
-        public EveningEmail(IEmailManager emailManager, IFeedManager feedManager, IFeedStorage feedStorage, IHtmlContentBuilder htmlContentBuilder)
-        {
-            _emailManager = emailManager;
-            _feedManager = feedManager;
-            _feedStorage = feedStorage;
-            _htmlContentBuilder = htmlContentBuilder;
-        }
+        private readonly IEmailManager _emailManager = emailManager;
+        private readonly IFeedManager _feedManager = feedManager;
+        private readonly IFeedStorage _feedStorage = feedStorage;
+        private readonly IHtmlContentBuilder _htmlContentBuilder = htmlContentBuilder;
 
         public void Run()
         {
