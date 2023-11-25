@@ -1,7 +1,8 @@
-﻿using FixtureFetchers;
+﻿using InterestAggregatorFunction.ServiceDtos;
 using InterestAggregatorFunction.Services;
+using System.Net;
+using System.Net.Http.Json;
 using System.ServiceModel.Syndication;
-using static Google.Protobuf.Compiler.CodeGeneratorResponse.Types;
 
 namespace InterestAggregatorFunction
 {
@@ -29,8 +30,16 @@ namespace InterestAggregatorFunction
             Dictionary<string, List<SyndicationItem>> filteredFeeds = _feedManager.FilterFeeds(feeds);
 
             //Fetch football fixtures.
-            var fixture = FixtureFetcher.GetFixture("chelsea", DateOnly.FromDateTime(DateTime.Now.AddDays(1))) 
-                ?? FixtureFetcher.GetFixture("england", DateOnly.FromDateTime(DateTime.Now.AddDays(1)));
+            Fixture fixture;
+            var fixtureServiceResult = new HttpClient().GetAsync("https://fixturefetcherservice.azurewebsites.net/fixturefetcher/gettomorrowsfixture/chelsea").Result;
+            if (fixtureServiceResult.StatusCode == HttpStatusCode.NotFound)
+            {
+                fixture = null;
+            }
+            else
+            {
+                fixture = fixtureServiceResult.Content.ReadFromJsonAsync<Fixture>().Result;
+            }
 
             //Construct the htmlBody
             string htmlFeedBody = _htmlContentBuilder

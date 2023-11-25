@@ -1,5 +1,5 @@
-using FixtureFetchers;
 using System.ServiceModel.Syndication;
+using InterestAggregatorFunction.ServiceDtos;
 
 namespace InterestAggregatorUnitTests
 {
@@ -58,7 +58,8 @@ namespace InterestAggregatorUnitTests
                 ["Test Game Title"] = syndicationItems
             };
 
-            var fixture = new Fixture("Chelsea vs Liverpool", new DateTime(2023, 11, 23, 14, 30, 0));
+            var fixture = new Fixture { HomeTeam = "Chelsea", AwayTeam = "Liverpool", Kickoff = new DateTime(2023, 11, 23, 14, 30, 0) };
+
             //Act
             var emailBody = _sut
                 .WithRssFeedContent(syndDict)

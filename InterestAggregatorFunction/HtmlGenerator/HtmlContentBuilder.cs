@@ -1,4 +1,4 @@
-﻿using FixtureFetchers;
+﻿using InterestAggregatorFunction.ServiceDtos;
 using System.ServiceModel.Syndication;
 
 namespace InterestAggregatorFunction.Services
@@ -37,8 +37,8 @@ namespace InterestAggregatorFunction.Services
             {
                 return this;
             }
-            _fixtureHtml += $"<b>{fixture.FixtureName}\n</b>";
-            _fixtureHtml += $"{fixture.FixtureTime.ToShortTimeString()}\n";
+            _fixtureHtml += $"<b>{fixture.HomeTeam} vs {fixture.AwayTeam}\n</b>";
+            _fixtureHtml += $"{fixture.Kickoff.ToShortTimeString()}\n";
             return this;
         }
 
