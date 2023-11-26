@@ -17,7 +17,7 @@ namespace InterestAggregatorFunction.Services
         public void SendEmail(string body)
         {
             Console.WriteLine("Preparing email");
-            var emailClient = new EmailClient(connectionString);
+            EmailClient emailClient = new(connectionString);
             emailClient.Send(
                 WaitUntil.Completed,
                 fromEmail,
