@@ -8,6 +8,7 @@ using System.ServiceModel.Syndication;
 using Xunit;
 using System.Net.Http.Json;
 using System.Net;
+using System.Net.Http;
 
 namespace InterestAggregatorFunctionalTests
 {
@@ -46,7 +47,7 @@ namespace InterestAggregatorFunctionalTests
 
             //Fetch football fixtures
             Fixture fixture;
-            var fixtureServiceResult = new HttpClient().GetAsync("https://fixturefetcherservice.azurewebsites.net/fixturefetcher/gettomorrowsfixture/chelsea").Result;
+            var fixtureServiceResult = new HttpClient().Send(new HttpRequestMessage(HttpMethod.Get, "https://fixturefetcherservice.azurewebsites.net/fixturefetcher/gettomorrowsfixture/chelsea"));
             if (fixtureServiceResult.StatusCode == HttpStatusCode.NotFound)
             {
                 fixture = null;
