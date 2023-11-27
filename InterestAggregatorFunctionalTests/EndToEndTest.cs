@@ -6,9 +6,6 @@ using InterestAggregatorFunction.ServiceDtos;
 using System.Reflection;
 using System.ServiceModel.Syndication;
 using Xunit;
-using System.Net.Http.Json;
-using System.Net;
-using System.Net.Http;
 
 namespace InterestAggregatorFunctionalTests
 {
@@ -46,17 +43,8 @@ namespace InterestAggregatorFunctionalTests
             Dictionary<string, List<SyndicationItem>> filteredFeeds = _feedManager.FilterFeeds(feeds);
 
             //Fetch football fixtures
-            Fixture fixture;
-            var fixtureServiceResult = new HttpClient().Send(new HttpRequestMessage(HttpMethod.Get, "https://fixturefetcherservice.azurewebsites.net/fixturefetcher/gettomorrowsfixture/chelsea"));
-            if (fixtureServiceResult.StatusCode == HttpStatusCode.NotFound)
-            {
-                fixture = null;
-            }
-            else
-            {
-                fixture = fixtureServiceResult.Content.ReadFromJsonAsync<Fixture>().Result;
-            }
-            
+            Fixture? fixture = FixtureFetcher.GetTomorrowsFixture("chelsea");
+
             //Construct the email
             string emailBody = _htmlContentBuilder
                 .WithRssFeedContent(filteredFeeds)

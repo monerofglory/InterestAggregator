@@ -11,14 +11,13 @@ namespace InterestAggregatorFunction.Services
 
         public Feed[] GetFeeds()
         {
-            var yaml = File.ReadAllText(GetYamlPath());
-
+            string yaml = File.ReadAllText(GetYamlPath());
             return DeserializeYamlToFeedListDto(yaml).FeedList;
         }
 
         private static FeedListDto DeserializeYamlToFeedListDto(string yaml)
         {
-            var deserializer = new DeserializerBuilder()
+            IDeserializer deserializer = new DeserializerBuilder()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .Build();
 
