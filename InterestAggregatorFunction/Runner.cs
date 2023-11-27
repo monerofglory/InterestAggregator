@@ -21,6 +21,13 @@ namespace InterestAggregatorFunction
             eveningEmail.Run();
         }
 
+        [Function("Warmer")]
+        public void Warm([TimerTrigger("0 50 20 * * *")] TimerInfo myTimer)
+        {
+            //Warm up the FixtureFetcher service
+            new HttpClient().Send(new HttpRequestMessage(HttpMethod.Get, $"https://fixturefetcherservice.azurewebsites.net/fixturefetcher/"));
+        }
+
         public static ServiceCollection RegisterDependencies(ServiceCollection services, FeedStorageYaml? feedStorageYamlOverride = null)
         {
             services.AddTransient<EveningEmail>();
