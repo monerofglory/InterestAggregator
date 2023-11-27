@@ -8,7 +8,16 @@ namespace InterestAggregatorFunction.Services
     {
         public static Fixture? GetTomorrowsFixture(string team)
         {
-            HttpResponseMessage? fixtureServiceResult = new HttpClient().Send(new HttpRequestMessage(HttpMethod.Get, $"https://fixturefetcherservice.azurewebsites.net/fixturefetcher/gettomorrowsfixture/{team}"));
+            HttpResponseMessage? fixtureServiceResult;
+            try
+            {
+                fixtureServiceResult = new HttpClient().Send(new HttpRequestMessage(HttpMethod.Get, $"https://fixturefetcherservice.azurewebsites.net/fixturefetcher/gettomorrowsfixture/{team}"), HttpCompletionOption.ResponseHeadersRead);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            
             if (fixtureServiceResult.StatusCode == HttpStatusCode.NotFound)
             {
                 return null;
