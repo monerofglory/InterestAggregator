@@ -25,7 +25,7 @@ namespace InterestAggregatorFunction
         public void Warm([TimerTrigger("0 50 20 * * *")] TimerInfo myTimer)
         {
             //Warm up the FixtureFetcher service
-            new HttpClient().Send(new HttpRequestMessage(HttpMethod.Get, $"https://fixturefetcherservice.azurewebsites.net/fixturefetcher/"));
+            new HttpClient().Send(new HttpRequestMessage(HttpMethod.Get, $"https://fixturefetcherservice.azurewebsites.net/"));
         }
 
         public static ServiceCollection RegisterDependencies(ServiceCollection services, FeedStorageYaml? feedStorageYamlOverride = null)
