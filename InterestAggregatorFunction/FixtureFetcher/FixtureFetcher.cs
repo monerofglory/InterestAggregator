@@ -11,7 +11,7 @@ namespace InterestAggregatorFunction.Services
             HttpResponseMessage? fixtureServiceResult;
             try
             {
-                fixtureServiceResult = new HttpClient().Send(new HttpRequestMessage(HttpMethod.Get, $"https://fixturefetcherservice.azurewebsites.net/fixturefetcher/gettomorrowsfixture/{team}"), HttpCompletionOption.ResponseHeadersRead);
+                fixtureServiceResult = new HttpClient().Send(new HttpRequestMessage(HttpMethod.Get, $"https://fixturefetcherservice.azurewebsites.net/soccer/team/{team}?date=tomorrow"));
             }
             catch (Exception)
             {
