@@ -37,6 +37,7 @@ namespace InterestAggregatorFunction.Services
             {
                 return this;
             }
+            _fixtureHtml += $"<b>Football Fixtures\n</b>";
             _fixtureHtml += $"<b>{fixture.HomeTeam} vs {fixture.AwayTeam}\n</b>";
             _fixtureHtml += $"{fixture.Kickoff.ToShortTimeString()}\n";
             return this;
