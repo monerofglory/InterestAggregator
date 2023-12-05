@@ -67,7 +67,7 @@ namespace InterestAggregatorUnitTests
                 .Build();
 
             //Assert
-            Assert.Equal("<PRE><b>Test Game Title</b>\n<a href=\"http://www.example.com/\" target=\"blank\">Test Title</a>\n\n<b>Chelsea vs Liverpool\n</b>14:30\n</PRE>", emailBody);
+            Assert.Equal("<PRE><b>Test Game Title</b>\n<a href=\"http://www.example.com/\" target=\"blank\">Test Title</a>\n\n<b>Football Fixtures\n</b><b>Chelsea vs Liverpool\n</b>14:30\n</PRE>", emailBody);
         }
 
         [Fact]
