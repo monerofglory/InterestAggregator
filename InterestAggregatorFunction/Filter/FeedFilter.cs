@@ -15,7 +15,7 @@ namespace InterestAggregatorFunction.Services
         private static List<SyndicationItem> FilterBasedOn(SyndicationFeed feed, List<string>? titleWords = null, List<string>? userWords = null)
         {
             //Filter out old items
-            var items = feed.Items.Where(item => item.PublishDate >= DateTime.Now.AddDays(-1));
+            IEnumerable<SyndicationItem> items = feed.Items.Where(item => item.PublishDate >= DateTime.Now.AddDays(-1));
 
             if (titleWords != null && titleWords.Count != 0)
             {
