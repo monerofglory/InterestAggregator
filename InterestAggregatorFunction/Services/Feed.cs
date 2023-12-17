@@ -22,7 +22,7 @@
         public string GetUrl() =>
             FeedType switch
             {
-                FeedTypeEnum.Reddit => $"https://www.reddit.com/r/{Link}/.rss",
+                FeedTypeEnum.Reddit => $"https://old.reddit.com/r/{Link}/.rss",
                 FeedTypeEnum.Steam => $"https://store.steampowered.com/feeds/news/app/{Link}",
                 _ => throw new ArgumentException("Unsupported feed type")
             };

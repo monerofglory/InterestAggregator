@@ -25,7 +25,7 @@ namespace InterestAggregatorUnitTests
             string testLink = testFeedObj.GetUrl();
 
             //Assert
-            Assert.Equal("https://www.reddit.com/r/11010011/.rss", testLink);
+            Assert.Equal("https://old.reddit.com/r/11010011/.rss", testLink);
         }
     }
 }
